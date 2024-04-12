@@ -1,11 +1,10 @@
 import { View, Text } from 'react-native'
 
 
-export function AuthScreen() {
+export  function AddressesScreen() {
   return (
     <View>
-      <Text>AuthScreen</Text>
-    
+      <Text>AddressesScreen</Text>
     </View>
   )
 }

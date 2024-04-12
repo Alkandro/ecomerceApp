@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
+import { View, Text ,Image} from "react-native";
 
 export function HomeScreen() {
   return (
     <View>
-      <Text>HomeScreennnnnnnn</Text>
+     
+      <Text>HomeScreen</Text>
     </View>
   );
 }

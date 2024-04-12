@@ -5,7 +5,7 @@ const home = {
   search: "search",
 };
 
-const wishList = {
+const wishlist = {
   root: "wishlistRoot",
   wishlist: "wishlist",
 };
@@ -19,18 +19,19 @@ const account = {
   root: "accountRoot",
   account: "account",
   changeName: "changeName",
-  changeEmail: "chandeEmail",
-  changeUserName: "changeUserName",
+  changeEmail: "changeEmail",
+  changeUsername: "changeUsername",
   changePassword: "changePassword",
   addresses: "addresses",
   addEditAddress: "addEditAddress",
   orders: "orders",
   order: "order",
 };
+
 export const screensName = {
   tab: "tabRoot",
   home,
-  wishList,
+  wishlist,
   cart,
   account,
 };
