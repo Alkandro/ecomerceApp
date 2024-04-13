@@ -6,7 +6,7 @@ import Logo from '../../../../assets/tashiro2.png'
 
 
 export function AuthScreen() {
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   const onShowLoginRegister = () => setShowLogin((prevState) => !prevState);
 
