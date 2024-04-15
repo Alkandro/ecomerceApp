@@ -3,11 +3,13 @@ import { TextInput, Button } from "react-native-paper";
 import { useFormik } from "formik";
 import Toast from "react-native-root-toast";
 import { authCtrl } from "../../../api";
+import { useAuth } from "../../../hooks";
 import { globalStyles } from "../../../styles";
 import { initialValues, validationSchame } from "./LoginForm.Form";
 
 export function LoginForm(props) {
   const { showRegister } = props;
+  const { login } = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -17,7 +19,7 @@ export function LoginForm(props) {
       try {
         const { email, password } = formValue;
         const response = await authCtrl.login(email, password);
-        console.log(response);
+        login(response.jwt);
       } catch (error) {
         Toast.show("Usuario o Contraseña incorrectos", {
           position: Toast.positions.CENTER,
