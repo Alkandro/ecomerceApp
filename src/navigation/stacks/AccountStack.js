@@ -33,7 +33,7 @@ export function AccountStack() {
         options={{ title: "Cambiar correo electronico" }}
       />
       <Stack.Screen
-        name={screensName.account.changeUserName}
+        name={screensName.account.changeUsername}
         component={ChangeUserNameScreen}
         options={{ title: "Cambiar nombre de usuario" }}
       />
