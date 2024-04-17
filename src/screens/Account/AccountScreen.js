@@ -1,11 +1,12 @@
 import { Text } from "react-native";
 import { Layout } from "../../layouts";
-import { UserInfo } from "../../components/Account";
+import { UserInfo, Menu } from "../../components/Account";
 
 export function AccountScreen() {
   return (
     <Layout.Basic>
      <UserInfo/>
+     <Menu/>
     </Layout.Basic>
   );
 }
