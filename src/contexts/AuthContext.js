@@ -46,11 +46,11 @@ export function AuthProvider(props) {
     setUser(null);
   };
 
-  const updateUser = async (key, user) => {
-    setUser({
-      ...user,
+  const updateUser = async (key, value) => {
+    setUser((prevState) => ({
+      ...prevState,
       [key]: value,
-    });
+    }));
   };
 
   const data = {

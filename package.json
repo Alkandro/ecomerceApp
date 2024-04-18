@@ -13,7 +13,7 @@
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
-    "expo": "50.0.15",
+    "expo": "50.0.17",
     "expo-status-bar": "~1.11.1",
     "expo-updates": "~0.24.12",
     "formik": "^2.4.5",
