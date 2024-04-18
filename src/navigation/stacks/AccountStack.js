@@ -4,7 +4,7 @@ import {
   ChangeEmailScreen,
   ChangePasswordScreen,
   ChangeNameScreen,
-  ChangeUserNameScreen,
+  ChangeUsernameScreen,
   AddressesScreen,
   AddEditAddressesScreen,
   OrderScreen,
@@ -35,13 +35,13 @@ export function AccountStack() {
       />
       <Stack.Screen
         name={screensName.account.changeUsername}
-        component={ChangeUserNameScreen}
+        component={ChangeUsernameScreen}
         options={{ title: "Cambiar nombre de usuario" }}
       />
       <Stack.Screen
         name={screensName.account.changePassword}
         component={ChangePasswordScreen}
-        options={{ title: "Cambiar contrasena" }}
+        options={{ title: "Cambiar contraseña" }}
       />
       <Stack.Screen
         name={screensName.account.addresses}
