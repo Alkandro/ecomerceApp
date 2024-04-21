@@ -20,7 +20,7 @@ const account = {
   account: "account",
   changeName: "changeName",
   changeEmail: "changeEmail",
-  changeUsername: "changeUserName",
+  changeUsername: "changeUsername",
   changePassword: "changePassword",
   addresses: "addresses",
   addEditAddress: "addEditAddress",

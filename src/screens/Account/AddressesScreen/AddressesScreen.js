@@ -32,6 +32,7 @@ export function AddressesScreen() {
   const retriveAddresses = async () => {
     const response = await addressCtrl.getAll(user.id);
     setAddresses(response?.data || []);
+    
   };
 
   const goToAddAddress = () => {
@@ -50,7 +51,7 @@ export function AddressesScreen() {
       {!addresses ? (
         <ActivityIndicator size="large" style={styles.loading} />
       ) : size(addresses) === 0 ? (
-        <Text style={styles.noAddressText}>Crea tu primeta dirección</Text>
+        <Text style={styles.noAddressText}>Crea tu primera dirección</Text>
       ) : (
         <AddressList addresses={addresses} onReload={onReload} />
       )}

@@ -1,4 +1,3 @@
-import { Text } from "react-native";
 import { Layout } from "../../layouts";
 import { UserInfo, Menu } from "../../components/Account";
 

@@ -8,6 +8,7 @@ import { styles } from "./Address.styles";
 
 export function Address(props) {
   const { addressId, address, onReload } = props;
+  console.log(address);
   const navigation = useNavigation();
 
   const goToUpdateAddress = () => {
