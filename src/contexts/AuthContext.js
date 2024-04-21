@@ -46,7 +46,7 @@ export function AuthProvider(props) {
     setUser(null);
   };
 
-  const updateUser = async (key, value) => {
+  const updateUser = (key, value) => {
     setUser((prevState) => ({
       ...prevState,
       [key]: value,

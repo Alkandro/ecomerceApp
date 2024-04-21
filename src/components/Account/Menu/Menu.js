@@ -1,10 +1,10 @@
 import { Alert } from "react-native";
-import { styles } from "./Menu.styles";
 import { List } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 import { map } from "lodash";
 import { useAuth } from "../../../hooks";
-import { useNavigation } from "@react-navigation/native";
 import { accountMenu, appMenu } from "./Menu.data";
+import { styles } from "./Menu.styles";
 
 export function Menu() {
   const navigation = useNavigation();
@@ -12,20 +12,21 @@ export function Menu() {
 
   const alertLogout = () => {
     Alert.alert(
-      "Cerrar sesion",
-      "¿Estas seguro que quieres salir de tu cuenta?",
+      "Cerrar sesión",
+      "¿Estas seguro de que quieres salir de tu cuenta?",
       [
         {
-          text: "Cancelar",
+          text: "NO",
         },
         {
-          text: "Confirmar",
+          text: "SI",
           onPress: logout,
         },
       ],
       { cancelable: false }
     );
   };
+
   return (
     <>
       <List.Section>
@@ -58,7 +59,7 @@ export function Menu() {
 
       <List.Section>
         <List.Item
-          title="Cerrar session"
+          title="Cerrar sesión"
           titleStyle={styles.titleLogoutItem}
           description="Cerrar esta sesion e iniciar con otra"
           left={(props) => <List.Icon {...props} icon="logout" />}

@@ -21,7 +21,7 @@ export function LoginForm(props) {
         const response = await authCtrl.login(email, password);
         login(response.jwt);
       } catch (error) {
-        Toast.show("Usuario o Contraseña incorrectos", {
+        Toast.show("Usuario o contraseña incorrectos", {
           position: Toast.positions.CENTER,
         });
       }
@@ -39,7 +39,7 @@ export function LoginForm(props) {
         error={formik.errors.email}
       />
       <TextInput
-        label="Contrasena"
+        label="Contraseña"
         style={globalStyles.form.input}
         secureTextEntry
         onChangeText={(text) => formik.setFieldValue("password", text)}

@@ -2,7 +2,7 @@ import { screensName } from "../../../utils";
 
 export const accountMenu = [
   {
-    title: "Cambiar nombre y apellido",
+    title: "Cambiar nombre y apellidos",
     description: "Cambiar el nombre de tu cuenta",
     leftIcon: "emoticon-excited-outline",
     screen: screensName.account.changeName,
@@ -40,7 +40,6 @@ export const appMenu = [
     leftIcon: "map-marker-outline",
     screen: screensName.account.addresses,
   },
-
   {
     title: "Lista de deseos",
     description: "Lista de todos los productos que te quieres comprar",

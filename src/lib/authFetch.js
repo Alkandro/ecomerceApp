@@ -30,21 +30,3 @@ export async function authFetch(url, params) {
     }
   }
 }
-
-// import { storageCrtl } from "../api/storage";
-// import { fn } from "../utils";
-
-// export async function authFetch(url, params) {
-//   const token = await storageCrtl.getToken();
-
-//   const logout = async () => {
-//     await storageCrtl.removeToken();
-//   };
-
-//   if (!token) {
-//     logout();
-//   } else {
-//     const response = fn.hasTokenExpired(token);
-//     console.log(response);
-//   }
-// }

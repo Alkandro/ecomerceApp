@@ -14,16 +14,13 @@ export function RegisterForm(props) {
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
-      console.log(formValue);
       try {
         const { email, username, password } = formValue;
         await authCtrl.register(email, username, password);
         showLogin();
       } catch (error) {
-        
         Toast.show("Error al registrar el usuario", {
           position: Toast.positions.CENTER,
-          
         });
       }
     },
