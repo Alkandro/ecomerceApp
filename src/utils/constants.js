@@ -6,6 +6,7 @@ export const ENV = {
     USERS_ME: "users/me",
     USERS: "users",
     ADDRESSES: "addresses",
+    HOME_BANNERS: "home-banners",
   },
   STORAGE: {
     TOKEN: "token",

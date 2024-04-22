@@ -16,10 +16,10 @@ export function Menu() {
       "¿Estas seguro de que quieres salir de tu cuenta?",
       [
         {
-          text: "NO",
+          text: "Cancelar",
         },
         {
-          text: "SI",
+          text: "Confirmar",
           onPress: logout,
         },
       ],
