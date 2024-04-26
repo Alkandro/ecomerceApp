@@ -1,19 +1,25 @@
+import { useState } from "react";
 import { View, Image, Pressable, Dimensions } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
+import { useNavigation } from "@react-navigation/native";
+import { size } from "lodash";
+import { screensName } from "../../../utils";
 import { styles } from "./ProductBanners.styles";
 
 const width = Dimensions.get("window").width;
 
 export function ProductBanners(props) {
   const { banners } = props;
+  const [bannerActive, setBannerActive] = useState(0);
+  const navigation = useNavigation();
 
-const goToProducto = (id) => {
-    console.log(id);
+  const goToProducto = (id) => {
+    navigation.navigate(screensName.home.product, { productId: id });
+  };
 
-}
-
-const renderItem = ({ item }) => {
+  const renderItem = ({ item }) => {
     const urlImage = item.attributes.banner.data.attributes.url;
+    console.log(item);
 
     return (
       <Pressable onPress={() => goToProducto(item.id)}>
@@ -30,6 +36,22 @@ const renderItem = ({ item }) => {
         sliderWidth={width}
         itemWidth={width}
         renderItem={renderItem}
+        onSnapToItem={(index) => setBannerActive(index)}
+      />
+      <Pagination
+        dotsLength={size(banners)}
+        activeDotIndex={bannerActive}
+        inactiveDotOpacity={0.6}
+        inactiveDotScale={0.6}
+        containerStyle={styles.dotsContainer}
+        dotStyle={{
+          width: 20,
+          borderRadius: 18,
+          backgroundColor: "blue",
+        }}
+        inactiveDotStyle={{
+          backgroundColor: "white",
+        }}
       />
     </View>
   );

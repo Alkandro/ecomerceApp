@@ -3,7 +3,7 @@ import { ENV } from "../utils";
 async function getAllBanners() {
   try {
     const sort = "sort=position:asc";
-    const populate = "populate=*"
+    const populate = "populate=*";
     const filters = `${sort}&${populate}`;
     const url = `${ENV.API_URL}/${ENV.ENDPOINTS.HOME_BANNERS}?${filters}`;
 

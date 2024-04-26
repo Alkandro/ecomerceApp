@@ -25,7 +25,8 @@ export function HomeScreen() {
 
   return (
     <Layout.Basic>
-      {banners && <ProductBanners banners={banners} />}
+      {banners && <ProductBanners banners={banners}/>}
+      
     </Layout.Basic>
   );
 }
