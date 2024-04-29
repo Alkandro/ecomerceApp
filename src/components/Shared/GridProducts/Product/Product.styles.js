@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   },
   product: {
     backgroundColor: "#fff",
-    borderRadius: 6,
+    borderRadius: 20,
     padding: 10,
   },
   image: {
