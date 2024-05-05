@@ -1,5 +1,5 @@
 export const ENV = {
-  API_URL: "http://192.168.0.8:1337/api",
+  API_URL: "http://192.168.0.11:1337/api",
   ENDPOINTS: {
     REGISTER: "auth/local/register",
     LOGIN: "auth/local",
@@ -11,5 +11,6 @@ export const ENV = {
   },
   STORAGE: {
     TOKEN: "token",
+    SEARCH_HISTORY: "search-history",
   },
 };

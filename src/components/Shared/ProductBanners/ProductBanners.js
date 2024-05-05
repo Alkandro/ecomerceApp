@@ -19,7 +19,7 @@ export function ProductBanners(props) {
 
   const renderItem = ({ item }) => {
     const urlImage = item.attributes.banner.data.attributes.url;
-    console.log(item);
+    
 
     return (
       <Pressable onPress={() => goToProducto(item.id)}>

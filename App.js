@@ -1,17 +1,15 @@
-
-import { PaperProvider } from 'react-native-paper';
+import { PaperProvider } from "react-native-paper";
+import { AuthProvider, SearchProvider } from "./src/contexts";
 import { RootNavigation } from "./src/navigation";
-import {AuthProvider} from './src/contexts'
 
 export default function App() {
   return (
     <AuthProvider>
-    <PaperProvider >
-   <RootNavigation />
-    
-    </PaperProvider>
+      <SearchProvider>
+        <PaperProvider>
+          <RootNavigation />
+        </PaperProvider>
+      </SearchProvider>
     </AuthProvider>
   );
 }
-
-
