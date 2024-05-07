@@ -5,6 +5,7 @@ import { productCtrl } from "../../api";
 import { Layout } from "../../layouts";
 import { LoadingScreen, Separator } from "../../components/Shared";
 import { Product } from "../../components/Product";
+import { Characteristics } from "../../components/Product/Characteristics";
 
 export function ProductScreen(props) {
   const {
@@ -22,6 +23,7 @@ export function ProductScreen(props) {
     try {
       const response = await productCtrl.getById(productId);
       setProduct({ ...response.data.attributes, id: response.data.id });
+      console.log(response);
 
       const mainImage = response.data.attributes.main_image.data.attributes.url;
       const images = response.data.attributes.images.data;
@@ -35,6 +37,8 @@ export function ProductScreen(props) {
       console.error(error);
     }
   };
+  
+  
 
   return (
     <>
@@ -53,6 +57,7 @@ export function ProductScreen(props) {
               />
               <Separator height={30} />
               <Product.Characteristics text={product.characteristics} />
+              
               <Separator height={70} />
             </View>
           </>
