@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { View, Image, KeyboardAvoidingView, Platform } from "react-native";
-import { LoginForm, RegisterForm } from "../../../components/Auth";
+import { LoginForm} from "../../../components/Auth/LoginForm"
+import { RegisterForm } from "../../../components/Auth/RegisterForm";
+import logo from "../../../../assets/logo.png";
 import { styles } from "./AuthScreen.styles";
-import Logo from '../../../../assets/tashiro2.png'
-
 
 export function AuthScreen() {
   const [showLogin, setShowLogin] = useState(true);
@@ -12,7 +12,7 @@ export function AuthScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={Logo} style={styles.logo} />
+      <Image source={logo} style={styles.logo} />
 
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}

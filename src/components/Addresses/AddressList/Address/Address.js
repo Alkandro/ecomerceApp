@@ -8,7 +8,6 @@ import { styles } from "./Address.styles";
 
 export function Address(props) {
   const { addressId, address, onReload } = props;
-  
   const navigation = useNavigation();
 
   const goToUpdateAddress = () => {
@@ -23,10 +22,10 @@ export function Address(props) {
       `¿Estas seguro de que quieres eliminar la dirección (${address.title})?`,
       [
         {
-          text: "Cancelar",
+          text: "NO",
         },
         {
-          text: "Confirmar",
+          text: "SI",
           onPress: deleteAddress,
         },
       ],
@@ -54,7 +53,7 @@ export function Address(props) {
         {address.state}, {address.city}, {address.postal_code}
       </Text>
       <Text>{address.country}</Text>
-      <Text>Numero de telefono: {address.phone}</Text>
+      <Text>Numer de telefono: {address.phone}</Text>
 
       <View style={styles.actions}>
         <Button mode="contained" onPress={goToUpdateAddress}>

@@ -6,7 +6,7 @@ import { productCtrl, addressCtrl } from "../../../api";
 import { useCart, useAuth } from "../../../hooks";
 import { Layout } from "../../../layouts";
 import { LoadingScreen, Search } from "../../../components/Shared";
-// import { Cart } from "../../../components/Cart";
+import { Cart } from "../../../components/Cart";
 import { fn } from "../../../utils";
 import { styles } from "./CartScreen.styles";
 

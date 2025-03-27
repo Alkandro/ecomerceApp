@@ -3,7 +3,6 @@ import RenderHtml from "react-native-render-html";
 
 export function Characteristics(props) {
   const { text } = props;
-  console.log(props);
 
   return (
     <RenderHtml contentWidth={200} source={{ html: markdownToHtml(text) }} />

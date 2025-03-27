@@ -1,12 +1,12 @@
-export * from "./AccountScreen"
+export * from "./AccountScreen";
 
-export * from "./ChangeNameScreen"
-export * from "./ChangeEmailScreen"
-export * from "./ChangeUsernameScreen"
-export * from "./ChangePasswordScreen"
+export * from "./ChangeNameScreen";
+export * from "./ChangeEmailScreen";
+export * from "./ChangeUsernameScreen";
+export * from "./ChangePasswordScreen";
 
-export * from "./AddressesScreen"
-export * from "./AddEditAddressesScreen"
+export * from "./AddressesScreen";
+export * from "./AddEditAddressScreen";
 
-export * from "./OrderScreen"
-export * from "./OrdersScreen"
+export * from "./OrdersScreen";
+export * from "./OrderScreen";

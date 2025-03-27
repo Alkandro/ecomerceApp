@@ -5,7 +5,7 @@ import Toast from "react-native-root-toast";
 import { authCtrl } from "../../../api";
 import { useAuth } from "../../../hooks";
 import { globalStyles } from "../../../styles";
-import { initialValues, validationSchame } from "./LoginForm.Form";
+import { initialValues, validationSchame } from "./LoginForm.form";
 
 export function LoginForm(props) {
   const { showRegister } = props;

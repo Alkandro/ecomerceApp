@@ -13,5 +13,4 @@ export const styles = StyleSheet.create({
     top: -5,
     right: -10,
   },
-  
 });

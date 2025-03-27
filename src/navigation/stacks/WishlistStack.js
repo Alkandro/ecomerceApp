@@ -11,7 +11,6 @@ export function WishlistStack() {
         name={screensName.wishlist.wishlist}
         component={WishlistScreen}
       />
-      
     </Stack.Navigator>
   );
 }

@@ -15,6 +15,6 @@ export const styles = new StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "flex-start",
-    margin: -3,
+   
   },
 });

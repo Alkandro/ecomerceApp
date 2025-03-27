@@ -14,31 +14,43 @@ export function HomeScreen() {
     getBanners();
     getProducts();
   }, []);
+
   const getBanners = async () => {
     try {
       const response = await homeBannerCtrl.getAll();
-      setBanners(response?.data || null);
+      console.log(response?.data)
+      if (response?.data?.length) {
+        setBanners(response.data);
+      } else {
+        setBanners([]);
+      }
     } catch (error) {
       Toast.show("Error al obtener los banners", {
         position: Toast.positions.CENTER,
       });
     }
   };
+  
   const getProducts = async () => {
     try {
       const response = await productCtrl.getLatestPublished();
-      setProducts(response?.data || []);
+      if (response?.data?.length) {
+        setProducts(response.data);
+      } else {
+        setProducts([]);
+      }
     } catch (error) {
       Toast.show("Error al obtener los productos", {
         position: Toast.positions.CENTER,
       });
     }
   };
+  
 
   return (
     <Layout.Basic>
       {banners && <ProductBanners banners={banners} />}
-      <GridProducts title="Nuevos productos" products={products}/>
+      <GridProducts title="Nuevos productos" products={products} />
     </Layout.Basic>
   );
 }

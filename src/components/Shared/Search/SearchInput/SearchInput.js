@@ -7,7 +7,7 @@ import { useSearch } from "../../../../hooks";
 import { screensName } from "../../../../utils";
 import { SearchHistory } from "../SearchHistory";
 import { AnimatedIcon, searchAnimation } from "./SearchInput.animation";
-import { styles } from "./Searchinput.styles";
+import { styles } from "./SearchInput.styles";
 
 export function SearchInput() {
   const [containerHeight, setContainerHeight] = useState(0);

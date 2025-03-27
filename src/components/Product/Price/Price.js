@@ -10,14 +10,14 @@ export function Price(props) {
       {discount && (
         <View style={styles.containerData}>
           <Text style={styles.dataText}>Precio recomendado:</Text>
-          <Text style={[styles.dataValue, styles.oldPrice]}>{price}¥</Text>
+          <Text style={[styles.dataValue, styles.oldPrice]}>{price}€</Text>
         </View>
       )}
 
       <View style={styles.containerData}>
         <Text style={styles.dataText}>Precio:</Text>
         <Text style={[styles.dataValue, styles.currentPrice]}>
-          {fn.calcPrice(price, discount)}¥
+          {fn.calcPrice(price, discount)}€
         </Text>
       </View>
 
@@ -25,7 +25,7 @@ export function Price(props) {
         <View style={styles.containerData}>
           <Text style={styles.dataText}>Ahorras:</Text>
           <Text style={[styles.dataValue, styles.saving]}>
-            {((price * discount) / 100).toFixed(2)}¥ (-{discount}%)
+            {((price * discount) / 100).toFixed(2)}€ (-{discount}%)
           </Text>
         </View>
       )}

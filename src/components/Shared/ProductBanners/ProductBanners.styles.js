@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   dotsContainer: {
     position: "absolute",
-    bottom: -20,
+    bottom: -30,
     width: "100%",
   },
   dot: {

@@ -6,14 +6,13 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -36,6 +35,10 @@
     },
     "updates": {
       "url": "https://u.expo.dev/6e8d1e94-8142-4509-9274-883ec28a3de9"
-    }
+    },
+    "experiments": {
+      "newArchEnabled": true
+    },
+    "jsEngine": "hermes"
   }
 }
