@@ -33,7 +33,8 @@ import { styles } from "./GridProducts.styles";
 
 export function GridProducts(props) {
   const { title, products } = props;
-
+  console.log("Productos recibidos en el grid:", products); // Debug
+  
   return (
     <View style={styles.container}>
       {title && <Text style={styles.title}>{title}</Text>}

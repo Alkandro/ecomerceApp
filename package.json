@@ -17,7 +17,7 @@
     "@react-navigation/native-stack": "^6.9.26",
     "axios": "^1.7.9",
     "babel-plugin-module-resolver": "^5.0.2",
-    "expo": "~52.0.38",
+    "expo": "~52.0.41",
     "expo-status-bar": "~2.0.1",
     "expo-updates": "~0.27.4",
     "formik": "^2.4.5",
