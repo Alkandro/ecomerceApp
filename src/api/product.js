@@ -52,9 +52,24 @@ async function getProductById(id) {
     throw error;
   }
 }
+// Nueva función para obtener producto por slug
+async function getProductBySlug(slug) {
+  try {
+    const populateFilter = "populate=*";
+    // Filtramos por el campo slug
+    const filter = `filters[slug][$eq]=${slug}`;
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PRODUCTS}?${filter}&${populateFilter}`;
+    const response = await fetch(url);
+    if (response.status !== 200) throw response;
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+}
 
 export const productCtrl = {
   getLatestPublished,
   search: searchProduct,
   getById: getProductById,
+  getBySlug: getProductBySlug,
 };
