@@ -56,16 +56,21 @@ async function getProductById(id) {
 async function getProductBySlug(slug) {
   try {
     const populateFilter = "populate=*";
-    // Filtramos por el campo slug
     const filter = `filters[slug][$eq]=${slug}`;
     const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PRODUCTS}?${filter}&${populateFilter}`;
+    console.log("URL getBySlug:", url);
     const response = await fetch(url);
+    const json = await response.json();
+    console.log("Response getBySlug:", json);
     if (response.status !== 200) throw response;
-    return await response.json();
+    return json;
   } catch (error) {
+    console.error("Error in getProductBySlug:", error);
     throw error;
   }
 }
+
+
 
 export const productCtrl = {
   getLatestPublished,

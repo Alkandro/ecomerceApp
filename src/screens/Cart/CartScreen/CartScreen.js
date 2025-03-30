@@ -29,20 +29,34 @@ export function CartScreen() {
   const getProducts = async () => {
     const productsTemp = [];
     let totalPaymentTemp = 0;
-
+  
     for await (const item of cart) {
-      const response = await productCtrl.getById(item.id);
-      const data = response.data.attributes;
-
-      productsTemp.push({ ...data, ...item });
-
-      const priceProduct = fn.calcPrice(data.price, data.discount);
-      totalPaymentTemp += priceProduct * item.quantity;
+      console.log("Item del carrito:", item);
+      try {
+        // Usar el slug para buscar el producto
+        const response = await productCtrl.getBySlug(item.slug);
+        if (!response.data || response.data.length === 0) {
+          console.error("Producto no encontrado para el slug:", item.slug);
+          continue;
+        }
+        // Si response.data[0].attributes no existe, usamos response.data[0] directamente
+        const data = response.data[0].attributes || response.data[0];
+        productsTemp.push({ ...data, ...item });
+  
+        const priceProduct = fn.calcPrice(data.price, data.discount);
+        totalPaymentTemp += priceProduct * item.quantity;
+      } catch (error) {
+        console.error("Error obteniendo producto con slug", item.slug, error);
+      }
     }
-
+  
     setProducts(productsTemp);
     setTotalPayment(totalPaymentTemp);
   };
+  
+  
+  
+  
 
   const loadAddresses = async () => {
     const response = await addressCtrl.getAll(user.id);

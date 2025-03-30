@@ -1,3 +1,4 @@
+// CartContext.js
 import { useState, useEffect, createContext } from "react";
 import { cartCtrl } from "../api";
 
@@ -16,9 +17,11 @@ export function CartProvider(props) {
 
   const onReload = () => setReload((prevState) => !prevState);
 
-  const addCart = async (productId) => {
+  // Actualización: addCart ahora recibe un objeto newItem con { id, slug, quantity, ... }
+  const addCart = async (newItem) => {
+    console.log("Nuevo item recibido en addCart:", newItem);
     try {
-      await cartCtrl.add(productId);
+      await cartCtrl.add(newItem);
       onReload();
     } catch (error) {
       throw error;

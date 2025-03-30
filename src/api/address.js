@@ -24,9 +24,11 @@ async function getAddresById(addressId) {
     if (response.status !== 200) throw response;
 
     const result = await response.json();
+    console.log("Direcciones obtenidas:", result); // 👈 Agrega esto
 
     return { ...result.data.attributes, id: result.data.id };
   } catch (error) {
+    console.error("Error obteniendo direcciones:", error); // 👈 Agrega esto
     throw error;
   }
 }
@@ -78,11 +80,14 @@ async function updateAddress(addressId, data) {
   }
 }
 
-async function deleleAdress(addressId) {
+async function deleteAddress(addressId) {
   try {
     const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESSES}/${addressId}`;
     const params = {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     };
 
     const response = await authFetch(url, params);
@@ -91,14 +96,16 @@ async function deleleAdress(addressId) {
 
     return await response.json();
   } catch (error) {
+    console.error("Error al eliminar la dirección:", error); // 👈 Agrega este log para ver qué error ocurre
     throw error;
   }
 }
+
 
 export const addressCtrl = {
   getAll: getAllAddresses,
   get: getAddresById,
   create: createAddress,
   update: updateAddress,
-  delete: deleleAdress,
+  delete: deleteAddress,
 };

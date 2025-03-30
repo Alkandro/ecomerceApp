@@ -54,16 +54,30 @@ export function AddEditAddressScreen(props) {
   });
 
   const retriveAddress = async () => {
-    const response = await addressCtrl.get(addressId);
-    await formik.setFieldValue("title", response.title);
-    await formik.setFieldValue("name", response.name);
-    await formik.setFieldValue("address", response.address);
-    await formik.setFieldValue("postal_code", response.postal_code);
-    await formik.setFieldValue("city", response.city);
-    await formik.setFieldValue("state", response.state);
-    await formik.setFieldValue("country", response.country);
-    await formik.setFieldValue("phone", response.phone);
+    
+    try {
+      const response = await addressCtrl.get(addressId);
+      // Si la respuesta viene de Strapi, se encontrará en response.data.attributes
+      const data = response.data && response.data.attributes ? response.data.attributes : response;
+      
+      await formik.setFieldValue("title", data.title || "");
+      await formik.setFieldValue("name", data.name || "");
+      await formik.setFieldValue("address", data.address || "");
+      await formik.setFieldValue("postal_code", data.postal_code || "");
+      await formik.setFieldValue("city", data.city || "");
+      await formik.setFieldValue("state", data.state || "");
+      await formik.setFieldValue("country", data.country || "");
+      await formik.setFieldValue("phone", data.phone || "");
+      console.log(response)
+    } catch (error) {
+      console.error("Error retrieving address:", error);
+      Toast.show("Error al obtener la dirección", {
+        position: Toast.positions.CENTER,
+        
+      });
+    }
   };
+  
 
   return (
     <KeyboardAwareScrollView extraScrollHeight={25}>

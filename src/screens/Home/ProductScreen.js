@@ -78,7 +78,7 @@ export function ProductScreen(props) {
         )}
       </Layout.Basic>
 
-      {product && <Product.BottomBar productId={product.id} />}
+      {product && <Product.BottomBar productId={product.id} slug={product.slug} />}
     </>
   );
 }

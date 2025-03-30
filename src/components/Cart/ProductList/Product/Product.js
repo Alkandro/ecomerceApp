@@ -8,7 +8,19 @@ export function Product(props) {
   const { product } = props;
   const { deleteProduct, increaseProduct, decreaseProduct } = useCart();
 
-  const mainImagen = product.main_image.data.attributes.url;
+  // Extraemos la URL de la imagen principal de forma segura:
+  let mainImagen = "";
+  if (product.main_image) {
+    if (product.main_image.data && product.main_image.data.attributes && product.main_image.data.attributes.url) {
+      mainImagen = product.main_image.data.attributes.url;
+    } else if (typeof product.main_image === "string") {
+      mainImagen = product.main_image;
+    }
+  }
+  // Si no se encontró una imagen, usa un placeholder
+  if (!mainImagen) {
+    mainImagen = "https://via.placeholder.com/150";
+  }
 
   const onDeleteProduct = () => deleteProduct(product.id);
   const onIncreaseProduct = () => increaseProduct(product.id);

@@ -3,13 +3,16 @@ import Toast from "react-native-root-toast";
 import { useCart } from "../../../../hooks";
 import { styles } from "./Buy.styles";
 
+// Ejemplo en el componente Buy:
 export function Buy(props) {
-  const { productId } = props;
+  const { productId, slug } = props;
   const { addCart } = useCart();
 
   const addProductCart = async () => {
+    console.log("Agregando al carrito:", { id: productId, slug, quantity: 1 });
     try {
-      await addCart(productId);
+      // Envía el objeto con id, slug y cantidad
+      await addCart({ id: productId, slug, quantity: 1 });
       Toast.show("Producto añadido al carrito", {
         position: Toast.positions.CENTER,
       });
@@ -32,3 +35,6 @@ export function Buy(props) {
     </Button>
   );
 }
+
+
+
