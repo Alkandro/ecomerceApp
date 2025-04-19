@@ -1,22 +1,23 @@
-import { View, Text } from "react-native";
-import { map } from "lodash";
+import { View, Text, FlatList } from "react-native";
 import { Product } from "./Product";
 import { styles } from "./WishlistList.styles";
 
-export function WishlistList(props) {
-  const { title, products, onReload } = props;
-
+export function WishlistList({ title, products, onReload }) {
   return (
     <View style={styles.container}>
       {title && <Text style={styles.title}>{title}</Text>}
 
-      {map(products, (product) => (
-        <Product
-          key={product.data.id}
-          product={product.data}
-          onReload={onReload}
-        />
-      ))}
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <Product
+            product={item}
+            onReload={onReload}
+          />
+        )}
+        contentContainerStyle={{ paddingBottom: 20 }}
+      />
     </View>
   );
 }

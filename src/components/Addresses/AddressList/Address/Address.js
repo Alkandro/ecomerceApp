@@ -37,6 +37,7 @@ export function Address({ address, addressId, onReload }) {
   const deleteAddress = async () => {
     try {
       await addressCtrl.delete(addressId);
+      console.log(addressId);
       if (onReload) {
         onReload();
       }

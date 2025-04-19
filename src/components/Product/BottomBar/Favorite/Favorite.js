@@ -23,18 +23,24 @@ export function Favorite(props) {
       setHasWishlist(false);
     }
   };
-
   const addWishlist = async () => {
     try {
       setLoading(true);
-      await wishlistCtrl.add(user.id, productId);
+      const response = await wishlistCtrl.add(user.id, productId);
+      // const responseData = await response.json(); // <---- Elimina esta línea
+      console.log("Respuesta de addWishlist:", response); // Loguea la respuesta sin intentar parsearla como JSON
       setHasWishlist(true);
+      Toast.show("Producto añadido a la lista de deseos", {
+        position: Toast.positions.CENTER,
+      });
     } catch (error) {
+      console.error("Error en addWishlist:", error);
       Toast.show("Error al añadir el producto a la lista de deseos", {
         position: Toast.positions.CENTER,
       });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const deleteWishlist = async () => {
@@ -46,9 +52,9 @@ export function Favorite(props) {
       Toast.show("Error al eliminar el producto de la lista de deseos", {
         position: Toast.positions.CENTER,
       });
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   if (hasWishlist === undefined) return null;

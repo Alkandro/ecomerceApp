@@ -20,21 +20,23 @@ async function addWishlist(userId, productId) {
 
     const response = await authFetch(url, params);
 
-    if (response.status !== 200) throw response;
+    // Aceptar tanto 200 (OK) como 201 (Created) como respuestas exitosas
+    if (response.status !== 200 && response.status !== 201) {
+      const error = await response.json(); // Intenta parsear el cuerpo del error
+      throw error;
+    }
 
     return await response.json();
   } catch (error) {
     throw error;
   }
 }
-
 async function checkWishlist(userId, productId) {
   try {
-    const filterUser = `filters[user][id][$eq][0]=${userId}`;
-    const filterProduct = `filters[product][id][$eq][1]=${productId}`;
-    const filters = `${filterUser}&${filterProduct}`;
-
-    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}?${filters}`;
+    const filterUser = `filters[user][id][$eq]=${userId}`;
+    const filterProduct = `filters[product][id][$eq]=${productId}`;
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}?${filterUser}&${filterProduct}`;
+    
     const response = await authFetch(url);
 
     if (response.status !== 200) throw response;
@@ -43,29 +45,40 @@ async function checkWishlist(userId, productId) {
     if (size(result.data) === 0) {
       return false;
     }
-    return result.data[0];
+
+    return result.data[0]; // Retorna el objeto con el ID para eliminar
   } catch (error) {
     throw error;
   }
 }
 
+
 async function deleteWishlist(userId, productId) {
   try {
+    console.log("Intentando eliminar producto ID:", productId, "para usuario ID:", userId);
     const dataFound = await checkWishlist(userId, productId);
+    console.log("Resultado de checkWishlist en delete:", dataFound);
 
     if (dataFound) {
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}/${dataFound.id}`;
       const params = { method: "DELETE" };
       const response = await authFetch(url, params);
+      console.log("Respuesta de authFetch (DELETE):", response);
 
-      if (response.status !== 200) throw response;
+      if (response.status !== 200 && response.status !== 204) throw response;
 
+      console.log("Eliminación exitosa");
       return true;
+    } else {
+      console.log("No se encontró la entrada en la lista de deseos");
+      return false;
     }
   } catch (error) {
+    console.error("Error al eliminar de la lista de deseos:", error);
     throw error;
   }
 }
+
 
 async function getAllProductWishlist(userId) {
   try {

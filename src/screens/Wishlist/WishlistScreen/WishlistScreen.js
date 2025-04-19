@@ -1,27 +1,26 @@
 import { useState, useCallback } from "react";
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import Toast from "react-native-root-toast";
-import { forEach, size } from "lodash";
+import { forEach, uniqBy } from "lodash";
+
 import { wishlistCtrl } from "../../../api";
-import { useAuth } from "../../../hooks";
-import { Layout } from "../../../layouts";
+import { useAuth, useSearch } from "../../../hooks";
 import { LoadingScreen } from "../../../components/Shared";
 import { WishlistList } from "../../../components/Wishlist";
+import { SearchInput } from "../../../components/Shared/Search/SearchInput"; // 👈 buscador animado
 import { styles } from "./WishlistScreen.styles";
 
 export function WishlistScreen() {
   const [products, setProducts] = useState(null);
-  const [reload, setReload] = useState(false);
   const { user } = useAuth();
+  const { searchText } = useSearch();
 
   useFocusEffect(
     useCallback(() => {
       getProductsWishlist();
-    }, [reload])
+    }, [])
   );
-
-  const onReload = () => setReload((prevState) => !prevState);
 
   const getProductsWishlist = async () => {
     try {
@@ -29,9 +28,13 @@ export function WishlistScreen() {
       const productTemp = [];
 
       forEach(response.data, (item) => {
-        productTemp.push(item.attributes.product);
+        if (item.product) {
+          productTemp.push(item.product);
+        }
       });
-      setProducts(productTemp);
+
+      const uniqueProducts = uniqBy(productTemp, "id");
+      setProducts(uniqueProducts);
     } catch (error) {
       Toast.show("Error al obtener la lista de deseos", {
         position: Toast.positions.CENTER,
@@ -39,22 +42,26 @@ export function WishlistScreen() {
     }
   };
 
+  const filteredProducts = products?.filter((p) =>
+    p.title.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
-    <Layout.Basic>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       {!products ? (
         <LoadingScreen text="Cargando lista" />
-      ) : size(products) === 0 ? (
-        <View style={styles.container}>
-          <Text style={styles.title}>Lista de deseos</Text>
-          <Text>No tienes ningun producto en tu lista</Text>
-        </View>
       ) : (
-        <WishlistList
-          title="Lista de deseos"
-          products={products}
-          onReload={onReload}
-        />
+        <View style={{ flex: 1 }}>
+          <SearchInput /> {/* 👈 Usamos tu buscador animado */}
+          <View style={styles.container}>
+            <Text style={styles.title}>Lista de deseos</Text>
+          </View>
+          <WishlistList
+            products={filteredProducts}
+            onReload={getProductsWishlist}
+          />
+        </View>
       )}
-    </Layout.Basic>
+    </SafeAreaView>
   );
 }
